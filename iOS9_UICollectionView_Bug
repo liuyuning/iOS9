@@ -1,0 +1,15 @@
+UICollectionView layoutSubviews after dealloc, And post Assertion.
+
+2015-09-22 12:17:56.330 XXX[613:91654] *** Assertion failure in
+-[UICollectionView _createPreparedSupplementaryViewForElementOfKind:atIndexPath:withLayoutAttributes:applyAttributes:],
+/BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit/UIKit-3505.16/UICollectionView.m:1519
+
+The Assertion desc is “UICollectionView dataSource is not set”.
+
+Set nil for layer's delegate to fix.
+
+- (void)dealloc{
+    
+    self.collectionView.layer.delegate = nil;
+    
+}
